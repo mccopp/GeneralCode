@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <script>
+	  var report = "http://<host>/SASVisualAnalyticsViewer/VisualAnalyticsViewer_guest.jsp?appSwitcherDisabled=true&reportName=Your+Report+Name&reportPath=/your/metadata/full+path&_vaSectionName=";
+	  // The section IDs below can be obtained from the URL that is generated when emailing the report. 
+	  // Open your report in Report Designer, select the section you are interested and click File-->E-mail
+	  var sectionID = ["vi1514", "vi2301", "vi3813", "vi5427", "vi12410", "vi14893"];
+	  var index = 0;
+	  var dummy = setInterval(loadVAReportSection, 60000); // time in milliseconds
+	  function loadVAReportSection() {
+		document.getElementById("VAreport").src=report + sectionID[index]; 
+		index = (index+1) % sectionID.length;
+	  }
+    </script>
+  </head>
+  <body onload="loadVAReportSection();">
+	<iframe id="VAreport" style="width:100%; height:100%"></iframe>
+  </body>
+</html>
